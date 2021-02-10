@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Succhiator
-// @namespace    https://segreteria.unigre.it/
+// @namespace    https://github.com/isra00/succhiator
 // @version      1.0
 // @description  RMR
 // @author       IVG
