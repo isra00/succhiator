@@ -1,6 +1,6 @@
 <?php
 
-$_POST['semestre'] = intval($_POST['semestre']);
+$_POST['pu-semestre'] = intval($_POST['pu-semestre']);
 
 //Abbiamo un file diverso per ogni anno e semestre
 $filename = 'orari-' . date('Y') . '-' . $_POST['pu-semestre'] . '.serialize';
