@@ -1,18 +1,22 @@
 // ==UserScript==
 // @name         Succhiator
-// @namespace    http://tampermonkey.net/
-// @version      0.1
+// @namespace    https://segreteria.unigre.it/
+// @version      1.0
 // @description  RMR
 // @author       IVG
 // @match        https://segreteria.unigre.it/framework/orariopers/orariopers.aspx
 // @grant        none
 // @run-at       document-end
+// @updateURL    https://github.com/isra00/succhiator/raw/main/succhiator.user.js
 // ==/UserScript==
 
 (function() {
     'use strict';
 
 document.Succhiator = {
+
+	serverUrl: "http://10.0.0.99:8080/succhiator/ricevereOrari.php",
+
 	parseOrario: function(iTabella)
 	{
 		var celle = document.querySelectorAll("#orario1sem table")[iTabella].querySelectorAll("td"),
@@ -90,7 +94,7 @@ document.Succhiator = {
 <div class="popup">
 	<h1>Edita il tuo orario (se necessario) <br>e clicca su <span class="pseudoboton">Confermare</span></h1>
 
-	<form style="text-align: center" method="POST" accept-charset="utf-8" action="http://localhost/succhiator/ricevereOrari.php">
+	<form style="text-align: center" method="POST" accept-charset="utf-8" id="succhiator-form">
 
 		<table class="succhiatorTable">
 			<tr>
@@ -135,6 +139,7 @@ document.Succhiator = {
 </div>
 `;
 		document.getElementsByTagName("body")[0].innerHTML = htmlPopup + document.getElementsByTagName("body")[0].innerHTML;
+		document.getElementById("succhiator-form").action = document.Succhiator.serverUrl;
 	},
 
 	succhiareOrario: function(iTabella)
