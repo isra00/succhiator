@@ -89,7 +89,7 @@ th.center { text-align: center; }
 `;
 		htmlPopup = htmlPopup.replace("%", iTabella);
 		document.getElementsByTagName("body")[0].innerHTML = htmlPopup + document.getElementsByTagName("body")[0].innerHTML;
-		
+
 		corsi = this.parseCorsi(iTabella);
 
 		tblCorsiHtml = "<tbody>";
@@ -119,7 +119,7 @@ th.center { text-align: center; }
 			this.modalitaCorsi[selects[i].id] = selects[i].value;
 		}
 
-		this.succhiareOrario(iTabella);		
+		this.succhiareOrario(iTabella);
 
 		return false;
 	},
@@ -127,7 +127,7 @@ th.center { text-align: center; }
 	parseOrario: function(iTabella)
 	{
 		var celle = document.querySelectorAll("#orario1sem table")[iTabella].querySelectorAll("td"),
-			oreNaturali, fascie, ora, giorno, sezione, i = 0, j, totaleGiorni = 5, modalitaCorso,
+			oreNaturali, ora, giorno, sezione, i = 0, j, totaleGiorni = 5, modalitaCorso,
 			fascie = {"pari": [{}, {}, {}, {}, {}], "dispari": [{}, {}, {}, {}, {}]},
 			tippiSettimane = ["pari", "dispari"];
 
@@ -152,13 +152,13 @@ th.center { text-align: center; }
 
 					giorno	= i % (totaleGiorni);
 					ora		= Math.floor(i / totaleGiorni);
-					
+
 					modalitaCorso = this.modalitaCorsi[celle[i].getAttribute('data-corso')];
 
-					// Si conta la ora se il corso è sempre in presenza o, se in alternanza, la parità 
+					// Si conta la ora se il corso è sempre in presenza o, se in alternanza, la parità
 					// della settimana (primo bucle, tippiSettimane) coincide con la parità della matricola
 					if (
-						"presenza" == modalitaCorso 
+						"presenza" == modalitaCorso
 						|| ("alternanza" == modalitaCorso && (j % 2 == this.matricola % 2))
 					)
 					{
