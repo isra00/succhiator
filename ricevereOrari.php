@@ -1,5 +1,11 @@
 <?php
 
+if (!$_POST['pu-semestre'])
+{
+	http_response_code(400);
+	die("<h1>400 Bad request</h1>Questo script deve ricevere dati POST.");
+}
+
 $_POST['pu-semestre'] = intval($_POST['pu-semestre']);
 
 //Abbiamo un file diverso per ogni anno e semestre

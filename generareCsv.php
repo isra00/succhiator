@@ -12,17 +12,25 @@ mb_internal_encoding('UTF-8');
 
 $giorni = ['Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì'];
 
-echo "Nome;Giorno;Inizio;Fine;Patente\n";
+echo "Nome;Giorno;Inizio Pari;Fine Pari;Inizio Dispari;Fine dispari;Patente\n";
 
 $dati = unserialize(file_get_contents('orari-' . $_GET['file'] . '.serialize'));
 foreach ($dati as $nome=>$dati)
 {
-	$dati['patente'] = $dati['patente'] ? 'Sí' : 'No';
+	$dati['patente'] = $dati['patente'] ? 'Sì' : 'No';
 
 	foreach ($dati['fascia'] as $giornoNumero=>$fascia)
 	{
 		echo mb_convert_encoding(
-			"{$nome};{$giorni[$giornoNumero]};{$fascia['inizio']};{$fascia['fine']};{$dati['patente']}\n", 
+			join(";", [
+				$nome,
+				$giorni[$giornoNumero],
+				$fascia['pari']['inizio'],
+				$fascia['pari']['fine'],
+				$fascia['dispari']['inizio'],
+				$fascia['dispari']['fine'],
+				$dati['patente']
+			]) . "\n", 
 			'Windows-1252',
 			'UTF-8'
 		);
