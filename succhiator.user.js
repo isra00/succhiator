@@ -15,7 +15,7 @@
 
 document.Succhiator = {
 
-	serverUrl: "http://10.0.0.99:8080/succhiator/ricevereOrari.php",
+	serverUrl: "http://10.0.0.99:81/succhiator/ricevereOrari.php",
 
 	regexpCellaCorso: /<b>\s*([\w\d]+)\s*<\/b><br>([^<]+)<br>/,
 
