@@ -17,7 +17,7 @@ echo "Nome;Giorno;Inizio Pari;Fine Pari;Inizio Dispari;Fine dispari;Patente\n";
 $dati = unserialize(file_get_contents('orari-' . $_GET['file'] . '.serialize'));
 foreach ($dati as $nome=>$dati)
 {
-	$dati['patente'] = $dati['patente'] ? 'Sì' : 'No';
+	$dati['patente'] = $dati['patente'] ? 'Si' : 'No';
 
 	foreach ($dati['fascia'] as $giornoNumero=>$fascia)
 	{
